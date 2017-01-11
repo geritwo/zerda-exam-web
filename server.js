@@ -12,7 +12,7 @@ var connection = mysql.createConnection({
   user: "'root'",
   password: "m2st3r",
   database: "projects"
-  
+
 });
 
 connection.connect(function(err) {
@@ -54,10 +54,16 @@ app.post('/exam', function(req, res) {
     res.status(200);
     res.send(error);
   } else {
-    sql.
-    res.send(response);
-    // NOTE: Debug:
-    // console.log('Response sent: ',response);
+    connection.query('SELECT * FROM projects', function(err, results) {
+        if (err) throw err;
+        console.log(results);
+
+        response = JSON.stringify(results);
+        res.send(response);
+        // Here I should format JSON.
+      });
+
+    connection.end();
   };
 
 });
