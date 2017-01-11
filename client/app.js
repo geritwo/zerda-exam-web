@@ -6,6 +6,7 @@ var feedback = document.querySelector('textarea');
 var score = document.querySelector('input[name=score]');
 var email = document.querySelector('input[name=email]');
 var loading = document.querySelector('h2');
+var list = document.querySelector('ul');
 
 loading.hidden = true;
 
@@ -13,10 +14,16 @@ button.addEventListener('click', submitForm);
 
 // AJAX functions
 
-function submitForm () {
+function submitForm() {
+  var formData = {
+    feedback: feedback.value,
+    score: score.value,
+    email: email.value
+  };
+  // debugger;
   loading.hidden = false;
   var httpRequest = initRequest();
-  postData(httpRequest);
+  postData(httpRequest, formData);
 };
 
 function initRequest() {
@@ -25,17 +32,14 @@ function initRequest() {
   return httpRequest;
 }
 
-function postData (httpRequest) {
+function postData(httpRequest, data) {
   httpRequest.setRequestHeader('Content-Type', 'application/json');
-  httpRequest.send(JSON.stringify({
-    feedback: feedback.value,
-    score: score.value,
-    email: email.value
-  }));
+
+  httpRequest.send(JSON.stringify(data));
   httpRequest.onreadystatechange = displayResponse(httpRequest);
 };
 
-function displayResponse (httpRequest) {
+function displayResponse(httpRequest) {
     if (httpRequest.readyState === XMLHttpRequest.DONE) {
         if (httpRequest.status === 200) {
           console.log(httpRequest.responseText);
