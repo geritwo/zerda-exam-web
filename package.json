@@ -1,0 +1,25 @@
+{
+  "name": "zerda-exam-web",
+  "version": "1.0.0",
+  "description": "GreenFox Zerda JS Exam",
+  "main": "test.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/geritwo/zerda-exam-web.git"
+  },
+  "author": "Gergo Vamosi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/geritwo/zerda-exam-web/issues"
+  },
+  "homepage": "https://github.com/geritwo/zerda-exam-web#readme",
+  "devDependencies": {
+    "tape": "^4.6.3"
+  },
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}
