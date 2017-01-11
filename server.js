@@ -4,6 +4,8 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var mysql = require('mysql');
 
+var john = require('./johnthevalidator.js');
+
 var sql = mysql.createConnection({
   /*
   host: "localhost",
@@ -40,9 +42,9 @@ app.post('/exam', function(req, res) {
   };
 
   // NOTE: temporary
-  var reqValid = true;
+  var johnSais = john(feedback, score, email);
 
-  if (reqValid = false) {
+  if (johnSais === false) {
     res.status(400);
     res.send(error);
   } else {

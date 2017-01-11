@@ -45,18 +45,22 @@ function fetchResponse(httpRequest) {
       if (httpRequest.status === 200) {
         var incoming = JSON.parse(httpRequest.response);
         console.log('Response:', incoming);
-        renderResponse(incoming);
+        processResponse(incoming);
       } else {
-        alert('ERROR: There was a problem with the request.');
+        loading.textContent = 'ERROR: There was a problem with the request.';
       }
   }
 };
 
-function renderResponse(incoming) {
-  incoming.projects.forEach(function(e) {
-    listItem = document.createElement('li')
-    listItem.textContent = e;
-    list.appendChild(listItem);
-  })
+function processResponse(incoming) {
+  if (incoming.status == "ok") {
+    incoming.projects.forEach(function(e) {
+      listItem = document.createElement('li')
+      listItem.textContent = e;
+      list.appendChild(listItem);
+    })
+  } else {
+    list.innerHTML = (incoming.message)
+  }
   loading.hidden = true;
 };
