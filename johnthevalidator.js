@@ -1,6 +1,8 @@
 // John the Validator. I'm sort of a DM fan.
 // (John the Revelator... got it? ;)
 
+'use strict';
+
 var iNeedToHear = [
   "amazing", "awesome", "blithesome", "excellent", "fabulous", "fantastic", "favorable", "fortuitous", "great", "incredible", "ineffable", "mirthful", "outstanding", "perfect", "propitious", "remarkable", "smart", "spectacular", "splendid", "stellar", "stupendous", "super", "ultimate", "unbelievable", "wondrous"
 ];
@@ -38,4 +40,4 @@ function isScoreOk(score) {
   } else { return false;}
 };
 
-// module.exports = john;
+module.exports = john;

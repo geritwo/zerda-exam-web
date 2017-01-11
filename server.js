@@ -24,6 +24,8 @@ app.use(express.static('client'));
 // });
 
 app.post('/exam', function(req, res) {
+  console.log("request body: ", req.body); // NOTE: 4debug;
+
   var feedback = req.body.feedback;
   var score = parseInt(req.body.score);
   var email = req.body.email;
@@ -41,11 +43,10 @@ app.post('/exam', function(req, res) {
     "message": "thank you"
   };
 
-  // NOTE: temporary
   var johnSais = john(feedback, score, email);
 
-  if (johnSais === false) {
-    res.status(400);
+  if (johnSais == false) {
+    res.status(200);
     res.send(error);
   } else {
     // SQL query

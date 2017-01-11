@@ -42,6 +42,7 @@ function postData(httpRequest, data) {
 
 function fetchResponse(httpRequest) {
   if (httpRequest.readyState === XMLHttpRequest.DONE) {
+    console.log(httpRequest);  // NOTE: 4Debug
       if (httpRequest.status === 200) {
         var incoming = JSON.parse(httpRequest.response);
         console.log('Response:', incoming);
