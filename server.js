@@ -6,14 +6,19 @@ var mysql = require('mysql');
 
 var john = require('./johnthevalidator.js');
 
-var sql = mysql.createConnection({
-  /*
+var connection = mysql.createConnection({
+
   host: "localhost",
-  user: "'jaj'",
-  password: "alma",
-  database: "caesar"
-  */
+  user: "'root'",
+  password: "m2st3r",
+  database: "projects"
+  
 });
+
+connection.connect(function(err) {
+  if (err) throw err
+  console.log('You are now connected to DB.')
+})
 
 var app = express();
 app.use(bodyParser.json());
@@ -49,7 +54,7 @@ app.post('/exam', function(req, res) {
     res.status(200);
     res.send(error);
   } else {
-    // SQL query
+    sql.
     res.send(response);
     // NOTE: Debug:
     // console.log('Response sent: ',response);
