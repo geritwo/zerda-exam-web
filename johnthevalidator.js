@@ -6,15 +6,12 @@ var iNeedToHear = [
 ];
 
 function john (feedback, score, email) {
-  var judgement = false;
-
   var emailOk = isEmailOk(email);
   var scoreOk = isScoreOk(score);
   var feedBackOk = isFeedbackOk(feedback);
 
-  if (emailOk, scoreOk, feedBackOk) {
-    judgement = true;
-  }
+  var judgement = emailOk, scoreOk, feedBackOk;
+
   return judgement;
 }
 
@@ -23,7 +20,8 @@ function isFeedbackOk(feedback) {
   var wordsThatMatter = wordsDontComeEasy.filter(function (e) {
     return iNeedToHear.indexOf(e) != -1;
   });
-  if (wordsDontComeEasy.length >= 3) {
+
+  if (wordsThatMatter.length >= 3) {
     return true;
   } else { return false; }
 };
@@ -40,4 +38,4 @@ function isScoreOk(score) {
   } else { return false;}
 };
 
-module.exports = john;
+// module.exports = john;

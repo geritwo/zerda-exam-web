@@ -69,6 +69,8 @@
     `["amazing", "awesome", "blithesome", "excellent", "fabulous", "fantastic", "favorable", "fortuitous", "great", "incredible", "ineffable", "mirthful", "outstanding", "perfect", "propitious", "remarkable", "smart", "spectacular", "splendid", "stellar", "stupendous", "super", "ultimate", "unbelievable", "wondrous"]`
   - the validator function should return false otherwise
   - use an array method to process the feedback
+
+  !!!
   - write unit tests for the cases in `test.js` found in this repository
   - write 3 more test cases
 
