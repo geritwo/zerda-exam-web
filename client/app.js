@@ -36,18 +36,27 @@ function postData(httpRequest, data) {
   httpRequest.setRequestHeader('Content-Type', 'application/json');
 
   httpRequest.send(JSON.stringify(data));
-  httpRequest.onreadystatechange = displayResponse(httpRequest);
+
+  httpRequest.onreadystatechange = function () { fetchResponse(httpRequest)};
 };
 
-function displayResponse(httpRequest) {
-    if (httpRequest.readyState === XMLHttpRequest.DONE) {
-        if (httpRequest.status === 200) {
-          console.log(httpRequest.responseText);
-          var response = JSON.parse(httpRequest.responseText).text;
-          list.innerHTML += '<li>' + response + '</li>';
-          loading.hidden = false;
-        } else {
-          alert('ERROR: There was a problem with the request.');
-        }
-    }
+function fetchResponse(httpRequest) {
+  if (httpRequest.readyState === XMLHttpRequest.DONE) {
+      if (httpRequest.status === 200) {
+        var incoming = JSON.parse(httpRequest.response);
+        console.log('Response:', incoming);
+        renderResponse(incoming);
+      } else {
+        alert('ERROR: There was a problem with the request.');
+      }
+  }
+};
+
+function renderResponse(incoming) {
+  incoming.projects.forEach(function(e) {
+    listItem = document.createElement('li')
+    listItem.textContent = e;
+    list.appendChild(listItem);
+  })
+  loading.hidden = true;
 };
